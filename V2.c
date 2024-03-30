@@ -13,7 +13,7 @@
      //up=300//
 
                                     /////////////////////////////////////////////
-
+// declare and  initialize variables
 int left = -100;
 int right= 100;
 int closed = 1127;
@@ -22,7 +22,7 @@ int level = 1216;
 int up = 300;
 
                                     /////////////////////////////////////////////
-
+// declare functions
 void turn(int direction, int time);
 void forward(int speed, int time);
 void wait(int time);
@@ -39,6 +39,7 @@ void clear();
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// main function here
 int main()
 {
     enable_servos();
@@ -70,7 +71,7 @@ int main()
     stopAtLine(90);
     wait(500);
     
-    
+    // line following
     if (analog(1) > 2500)
     {
     	while (analog(1) > 2500)
@@ -99,6 +100,7 @@ int main()
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// simple turning function with two parameters, direction of turn and time
 void turn(int direction, int time)
 {
     motor(3 , direction);
@@ -109,7 +111,7 @@ void turn(int direction, int time)
 }
 
 //////////////////////////////////////////////////////////////
-
+// simple forward function with 2 parameters, speed and time
 void forward(int speed, int time)
 {
     motor(3, speed);
@@ -121,7 +123,7 @@ void forward(int speed, int time)
 }
 
 //////////////////////////////////////////////////////////////
-
+// this just makes our main function easier to read
 void wait(int time)
 {
     motor(3, 0);
@@ -130,7 +132,7 @@ void wait(int time)
 }
 
 //////////////////////////////////////////////////////////////
-
+// sets a servo at a position and pauses the robot for a second so its not too jerky
 void servo(int servo, int position)
 {
 	set_servo_position(servo, position);
@@ -138,7 +140,7 @@ void servo(int servo, int position)
 }
 
 //////////////////////////////////////////////////////////////
-
+// first draft of pickupguy function, doesn't help that the forward function is a comment
 void pickUpGuy()
 {
     servo(0, level);    //setup
@@ -150,7 +152,7 @@ void pickUpGuy()
 }
     
 //////////////////////////////////////////////////////////////
-
+// second draft of pickup guy function, used in code
 void pickUpGuy2()
 {
 	servo(0, level);    //setup
@@ -162,7 +164,7 @@ void pickUpGuy2()
 }
 
 //////////////////////////////////////////////////////////////
-
+// third draft, speed of forward function changed, not used
 void pickUpGuy3()
 {
 	servo(0, level);    //setup
@@ -174,7 +176,7 @@ void pickUpGuy3()
 }
     
 //////////////////////////////////////////////////////////////
-
+// should place down the guy
 void putDownGuy()
 {
     servo(3, closed);
@@ -187,7 +189,7 @@ void putDownGuy()
 }
 
 //////////////////////////////////////////////////////////////
-
+// simple line following code, with a parameter of how many ticks
 void lineFollow(int ticks)
 {
    while (gmpc(0) < ticks && gmpc(3) < ticks)
@@ -210,7 +212,7 @@ void lineFollow(int ticks)
 }
 
 //////////////////////////////////////////////////////////////
-
+// not used
 void squareUp(int speed)
 {
 		int threshold = 3600;
@@ -239,7 +241,7 @@ void squareUp(int speed)
 }
 
 //////////////////////////////////////////////////////////////
-
+// initializes servos to starting position
 void startUp()
 {
 	servo(0, level);
@@ -248,7 +250,7 @@ void startUp()
 }
  
 //////////////////////////////////////////////////////////////
-
+// tells robot to move forward until it hits a line of black tape
 void stopAtLine(int speed)
 {
     while (analog(0) < 3000)
