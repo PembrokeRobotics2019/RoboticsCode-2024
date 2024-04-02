@@ -13,7 +13,7 @@
      //up=300//
 
                                     /////////////////////////////////////////////
-
+// declaring and intializing variables
 int left = -100;
 int right= 100;
 int closed = 1127;
@@ -22,7 +22,7 @@ int level = 1216;
 int up = 300;
 
                                     /////////////////////////////////////////////
-
+// declaring functions
 void turn(int direction, int time);
 void forward(int speed, int time);
 void wait(int time);
@@ -35,6 +35,8 @@ void clear();
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// main function attached below
 int main()
 {
     enable_servos();
@@ -53,6 +55,8 @@ int main()
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+// very simple turn function with parameters of direction and time
 void turn(int direction, int time)
 {
     motor(3 , direction);
@@ -64,6 +68,7 @@ void turn(int direction, int time)
 
 //////////////////////////////////////////////////////////////
 
+// assuming no faulty battery / motors, this should be reliable
 void forward(int speed, int time)
 {
     motor(3, speed);
@@ -76,6 +81,7 @@ void forward(int speed, int time)
 
 //////////////////////////////////////////////////////////////
 
+// this makes the code way easier to read
 void wait(int time)
 {
     motor(3, 0);
@@ -84,7 +90,7 @@ void wait(int time)
 }
 
 //////////////////////////////////////////////////////////////
-
+// sets servo to given position
 void servo(int servo, int position)
 {
 	set_servo_position(servo, position);
@@ -93,6 +99,7 @@ void servo(int servo, int position)
 
 //////////////////////////////////////////////////////////////
 
+// first draft of pickupguy function the speed didnt work, also probably didnt help that the forward function was in a comment lol
 void pickUpGuy()
 {
     servo(0, level);    //setup
@@ -105,6 +112,7 @@ void pickUpGuy()
     
 //////////////////////////////////////////////////////////////
 
+//second draft, which is the draft we use, of the pickup guy function
 void pickUpGuy2()
 {
 	servo(0, level);    //setup
@@ -116,7 +124,7 @@ void pickUpGuy2()
 }
 
 //////////////////////////////////////////////////////////////
-
+ // third draft, only parameters of forward function were changed, but this method was not used in the main 
 void pickUpGuy3()
 {
 	servo(0, level);    //setup
@@ -129,6 +137,7 @@ void pickUpGuy3()
     
 //////////////////////////////////////////////////////////////
 
+// sets servos to intial positions
 void startUp()
 {
 	servo(0, level);
