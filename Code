@@ -1,1 +1,36 @@
-//EnterCode
+#include <kipr/wombat.h>
+
+
+
+int main()
+{
+
+  create3_connect();
+   
+  enable_servos();
+   
+  create3_drive_straight (1.82 , 0.46);
+   
+  create3_wait();
+   
+    create3_rotate_degrees(90, 50);
+    create3_wait();
+    create3_drive_straight (.11 , 0.16);
+    create3_wait();
+    create3_rotate_degrees(271, 90);
+    create3_wait();
+    set_servo_position(0, 250);
+    msleep(3000);
+    set_servo_position(1, 1670);
+    msleep(3000);
+    set_servo_position(0, 1000);
+    create3_wait();
+    create3_rotate_degrees(90, 90);
+    create3_wait();
+    set_servo_position(1, 1000);
+    msleep(3000);
+   
+   
+    return 0;
+   
+}
